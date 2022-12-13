@@ -20,24 +20,32 @@ import { Button } from "react-bootstrap";
 
 // export default UseReducer
 
-let initialValues = { count: 0 ,name:""};
+//using use reducer
+
+let initialValues = { count: 0, name: "" }; //setting the initial value
+
 function Reducer(state, action) {
-  console.log(action.type); //increment or decrement
+
   switch (action.type) {
     case "increment":
-      return { ...state,count: state.count + 1 };
+      return { ...state, count: state.count + 1 };
 
     case "decrement":
       return { ...state, count: state.count - 1 };
+
     case "reset":
       return initialValues;
-    
-    case "updateName":return { ...state,name:action.value}
+
+    case "updateName":
+      return { ...state, name: action.value };
+
+    default:
+      return state;
   }
 }
 
 function UseReducer() {
-  let [state, dispatch] = useReducer(Reducer, initialValues);
+  let [state, dispatch] = useReducer(Reducer, initialValues); //dispatch to call the reducer function
 
   return (
     <div className="container-fluid">
@@ -64,11 +72,16 @@ function UseReducer() {
         <Button variant="warning" onClick={() => dispatch({ type: "reset" })}>
           Reset
         </Button>
-
         <br></br>
         <br></br>
-         <input type="text" value={state.name} onChange={(e)=>dispatch({type:"updateName",value:e.target.value})}></input>
-      <div>{state.name}</div>
+        <input
+          type="text"
+          value={state.name}
+          onChange={(e) =>
+            dispatch({ type: "updateName", value: e.target.value })
+          }
+        ></input>
+        <div>{state.name}</div>
       </div>
     </div>
   );

@@ -7,6 +7,7 @@ function NestedExample() {
       <h3>This is an example to demonstrate the Nested Routing</h3>
 
       <ul>
+      {/* to set the url */}
         <Link to="profile">
           <li>
             <div>Profile</div>
@@ -18,9 +19,6 @@ function NestedExample() {
             <div>Account</div>
           </li>
         </Link>
-
-       
-
 
         <Link to="use-ref">
           <li>
@@ -34,14 +32,14 @@ function NestedExample() {
           </li>
         </Link>
 
-        
         <Link to="/nested-example">
           <li>
             <div>Nested Home</div>
           </li>
         </Link>
-       
       </ul>
+
+      {/* to render the current route selected */}
       <Outlet />
     </div>
   );

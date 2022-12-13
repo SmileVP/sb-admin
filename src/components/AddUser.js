@@ -1,29 +1,33 @@
-import React, { useState ,useContext} from "react";
+import React, { useState, useContext } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { useNavigate } from "react-router-dom";
-import {UserContext} from"./ContextComponent/UserContextComponent"
-
+import { UserContext } from "./ContextComponent/UserContextComponent";
 
 function AddUser() {
+
   let [name, setName] = useState("");
   let [email, setEmail] = useState("");
   let [mobile, setMobile] = useState("");
   let [batch, setBatch] = useState("");
   let [timings, setTimings] = useState("");
 
-  let context=useContext(UserContext)
+  //to get the value from user context
+  let context = useContext(UserContext);
 
+  //for redirection
   let navigate = useNavigate();
 
   let handleSubmit = () => {
-    console.log(name, email, mobile, batch, timings);
-    let newData = { name, email, mobile, batch, timings };
-    let newArray = [...context.users];
-    newArray.push(newData);
-    context.setUsers(newArray);
-    navigate('/dashboard');
+   
+
+    let newData = { name, email, mobile, batch, timings };    //to get the new data of users
+    let newArray = [...context.users]; //to get the details of old users
+    newArray.push(newData);//pushing the new data to old data
+    context.setUsers(newArray);//updating the users details
+    navigate("/dashboard");//navigating to dashboard
   };
+
   return (
     <>
       <div className="container-fluid">
@@ -33,6 +37,8 @@ function AddUser() {
             <Form.Control
               type="text"
               placeholder="Enter Name"
+
+              // to update the name state
               onChange={(e) => setName(e.target.value)}
             />
           </Form.Group>
@@ -42,6 +48,8 @@ function AddUser() {
             <Form.Control
               type="email"
               placeholder="Enter email"
+
+              //to update the email state
               onChange={(e) => setEmail(e.target.value)}
             />
           </Form.Group>
@@ -51,6 +59,7 @@ function AddUser() {
             <Form.Control
               type="text"
               placeholder="Enter Mobile"
+              //to update the mobile state
               onChange={(e) => setMobile(e.target.value)}
             />
           </Form.Group>
@@ -60,6 +69,7 @@ function AddUser() {
             <Form.Control
               type="text"
               placeholder="Enter Batch"
+              //to update the batch state
               onChange={(e) => setBatch(e.target.value)}
             />
           </Form.Group>
@@ -68,6 +78,7 @@ function AddUser() {
             <Form.Label>Session Timings</Form.Label>
             <Form.Select
               defaultValue={"0"}
+              //to update the timings state
               onChange={(e) => setTimings(e.target.value)}
             >
               <option value="0" disabled>
