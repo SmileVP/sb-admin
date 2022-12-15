@@ -19,8 +19,6 @@ function AddUser() {
   let navigate = useNavigate();
 
   let handleSubmit = () => {
-   
-
     let newData = { name, email, mobile, batch, timings };    //to get the new data of users
     let newArray = [...context.users]; //to get the details of old users
     newArray.push(newData);//pushing the new data to old data
@@ -37,7 +35,6 @@ function AddUser() {
             <Form.Control
               type="text"
               placeholder="Enter Name"
-
               // to update the name state
               onChange={(e) => setName(e.target.value)}
             />
@@ -48,7 +45,6 @@ function AddUser() {
             <Form.Control
               type="email"
               placeholder="Enter email"
-
               //to update the email state
               onChange={(e) => setEmail(e.target.value)}
             />
